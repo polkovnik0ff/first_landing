@@ -4,7 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Аренда опалубки в Москве — от 230 ₽/м² | Статика-С</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<!-- SEO -->
+<meta name="description" content="Аренда опалубки в Москве и МО от 230 ₽/м². Отгрузка в день заказа, фиксированная цена в договоре, бесплатный инженерный расчёт за 15 минут. Компания Статика-С.">
+<link rel="canonical" href="https://opalubka365.ru/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Аренда опалубки в Москве — от 230 ₽/м² | Статика-С">
+<meta property="og:description" content="Отгружаем в день заказа. Цена не вырастет после подписания договора. Без минимального срока аренды.">
+<meta property="og:url" content="https://opalubka365.ru/">
+<meta property="og:image" content="https://opalubka365.ru/img/og-preview.jpg">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -120,7 +134,7 @@
     </div>
     <div class="calc-form reveal-right">
       <div class="calc-group">
-        <label>Тип опалубки</label>
+        <label for="calcType">Тип опалубки</label>
         <div class="custom-select" id="calcTypeCustom">
           <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">Опалубка перекрытий (без фанеры)</button>
           <div class="custom-select-menu" role="listbox">
@@ -145,16 +159,16 @@
         </div>
       </div>
       <div class="calc-group">
-        <label>Площадь, м²</label>
+        <label for="calcArea">Площадь, м²</label>
         <input type="number" id="calcArea" value="100" min="1" max="99999" oninput="calculate()">
       </div>
       <div class="calc-group">
-        <label>Срок аренды, месяцев</label>
+        <label for="calcMonths">Срок аренды, месяцев</label>
         <input type="number" id="calcMonths" value="1" min="1" max="24" oninput="calculate()">
       </div>
 
       <div class="calc-group">
-        <label>Нужна доставка</label>
+        <label for="calcDelivery">Нужна доставка</label>
         <div class="select-wrap">
           <select id="calcDelivery" onchange="calculate()">
             <option value="0">Нет, самовывоз</option>
@@ -385,16 +399,16 @@
       <div class="form-required-note">Поля, отмеченные <strong>*</strong>, обязательны для заполнения.</div>
       <form class="lead-form" novalidate>
         <div class="fg">
-          <label class="field-required">Ваше имя</label>
-          <input type="text" name="name" placeholder="Представьтесь, пожалуйста" required>
+          <label class="field-required" for="form-name">Ваше имя</label>
+          <input type="text" id="form-name" name="name" placeholder="Представьтесь, пожалуйста" required>
         </div>
         <div class="fg">
-          <label class="field-required">Телефон</label>
-          <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          <label class="field-required" for="form-phone">Телефон</label>
+          <input type="tel" id="form-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
         </div>
         <div class="fg">
-          <label>Комментарий</label>
-          <textarea name="comment" placeholder="Опишите ваш объект или задачу (необязательно)"></textarea>
+          <label for="form-comment">Комментарий</label>
+          <textarea id="form-comment" name="comment" placeholder="Опишите ваш объект или задачу (необязательно)"></textarea>
         </div>
         <div class="captcha-box" aria-hidden="true">
           <div class="captcha-checkbox"></div>
@@ -424,11 +438,11 @@
           </div>
         </a>
         <div style="margin-top: 16px;">
-          <a href="#" class="msg-btn tg" style="display:inline-flex;margin-right:8px;" aria-label="Telegram">
-            <img src="img/telegram-logo.png" alt="Telegram">
+          <a href="#" class="msg-btn tg footer-msg" aria-label="Telegram">
+            <img src="img/telegram-logo.png" alt="Telegram" loading="lazy">
           </a>
-          <a href="#" class="msg-btn wa" style="display:inline-flex;" aria-label="WhatsApp">
-            <img src="img/whatsapp-logo.png" alt="WhatsApp">
+          <a href="#" class="msg-btn wa" aria-label="WhatsApp">
+            <img src="img/whatsapp-logo.png" alt="WhatsApp" loading="lazy">
           </a>
         </div>
       </div>
@@ -479,12 +493,12 @@
     <div class="form-required-note">Поля, отмеченные <strong>*</strong>, обязательны для заполнения.</div>
     <form class="lead-form lead-form-modal" novalidate>
       <div class="fg">
-        <label class="field-required">Ваше имя</label>
-        <input type="text" name="name" placeholder="Представьтесь, пожалуйста" required>
+        <label class="field-required" for="modal-name">Ваше имя</label>
+        <input type="text" id="modal-name" name="name" placeholder="Представьтесь, пожалуйста" required>
       </div>
       <div class="fg">
-        <label class="field-required">Телефон</label>
-        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+        <label class="field-required" for="modal-phone">Телефон</label>
+        <input type="tel" id="modal-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
       </div>
       <div class="captcha-box" aria-hidden="true">
           <div class="captcha-checkbox"></div>
@@ -499,9 +513,25 @@
     <div class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</div>
   </div>
 </div>
-</div>
 
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Статика-С",
+  "description": "Аренда опалубки в Москве и Московской области",
+  "url": "https://opalubka365.ru",
+  "telephone": "+7-495-230-23-10",
+  "email": "info@opalubka365.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва и МО",
+    "addressCountry": "RU"
+  },
+  "priceRange": "от 230 ₽/м²"
+}
+</script>
 
     <script src="js/script.js"></script>
 </body>

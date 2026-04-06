@@ -1,3 +1,4 @@
+(function () {
 // ═══ Calculator ═══
 function calculate() {
   const type = parseInt(document.getElementById('calcType').value, 10) || 0;
@@ -166,3 +167,8 @@ document.querySelectorAll('.lead-form').forEach((form) => {
     }
   });
 });
+
+  window.openModal  = openModal;
+  window.closeModal = closeModal;
+  window.calculate  = calculate;
+})();

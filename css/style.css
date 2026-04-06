@@ -14,6 +14,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+button, input, textarea, select { font-family: inherit; }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -85,7 +86,7 @@ body {
 
 .btn-header {
   background: var(--gold); color: var(--black); border: none;
-  padding: 10px 24px; font-family: 'Lato', sans-serif;
+  padding: 10px 24px;
   font-weight: 700; font-size: 13px; text-transform: uppercase;
   letter-spacing: 1px; cursor: pointer; transition: all 0.2s;
 }
@@ -137,7 +138,7 @@ body {
 
 .btn-hero {
   background: var(--gold); color: var(--black); border: 2px solid var(--gold);
-  padding: 18px 44px; font-family: 'Lato', sans-serif;
+  padding: 18px 44px;
   font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.3s;
   text-decoration: none; display: inline-block;
 }
@@ -211,7 +212,7 @@ body {
 .calc-group select, .calc-group input[type="number"] {
   width: 100%; padding: 14px 16px; border: 2px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.05); color: var(--white);
-  font-family: 'Lato', sans-serif; font-size: 15px;
+  font-size: 15px;
   outline: none; transition: border-color 0.2s; appearance: none;
 }
 .calc-group select { cursor: pointer; }
@@ -241,7 +242,6 @@ body {
   border: 2px solid rgba(255,255,255,0.15);
   background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
   color: var(--white);
-  font-family: 'Lato', sans-serif;
   font-size: 15px;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s, transform 0.2s;
@@ -351,7 +351,7 @@ body {
 
 .btn-calc {
   width: 100%; background: var(--white); color: var(--black);
-  border: none; padding: 16px; font-family: 'Lato', sans-serif;
+  border: none; padding: 16px;
   font-weight: 700; font-size: 14px; text-transform: uppercase;
   letter-spacing: 1px; cursor: pointer; transition: all 0.3s; margin-top: 16px;
 }
@@ -409,7 +409,7 @@ body {
 
 .cat-cta {
   display: block; width: 100%; background: var(--black); color: var(--white);
-  border: none; padding: 14px; font-family: 'Lato', sans-serif;
+  border: none; padding: 14px;
   font-weight: 700; font-size: 13px; text-transform: uppercase;
   letter-spacing: 1px; cursor: pointer; transition: all 0.2s; text-align: center;
 }
@@ -485,7 +485,7 @@ body {
 
 .btn-promo {
   background: var(--black); color: var(--gold); border: none;
-  padding: 16px 40px; font-family: 'Lato', sans-serif; font-weight: 700;
+  padding: 16px 40px; font-weight: 700;
   font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px;
   cursor: pointer; transition: all 0.3s; white-space: nowrap; flex-shrink: 0;
 }
@@ -534,7 +534,7 @@ body {
 }
 .fg input, .fg textarea {
   width: 100%; padding: 14px 16px; border: 2px solid var(--border);
-  font-family: 'Lato', sans-serif; font-size: 15px;
+  font-size: 15px;
   transition: border-color 0.2s; background: var(--white); outline: none;
 }
 .fg input:focus, .fg textarea:focus { border-color: var(--gold); }
@@ -542,7 +542,7 @@ body {
 
 .btn-submit {
   width: 100%; background: var(--gold); color: var(--black);
-  border: none; padding: 16px; font-family: 'Lato', sans-serif;
+  border: none; padding: 16px;
   font-weight: 700; font-size: 14px; text-transform: uppercase;
   letter-spacing: 1.5px; cursor: pointer; transition: all 0.3s; margin-top: 8px;
 }
@@ -588,6 +588,7 @@ body {
 }
 .footer-bottom a { color: var(--gray); text-decoration: none; margin-left: 20px; transition: color 0.2s; }
 .footer-bottom a:hover { color: var(--gold); }
+.footer-msg { margin-right: 8px; }
 
 /* ═══ MODAL ═══ */
 .modal-overlay {

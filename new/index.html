@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аренда опалубки в Москве — от 230 ₽/м² | Статика-С</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<meta name="description" content="Аренда опалубки в Москве и МО от 230 ₽/м². Отгрузка в день заказа, фиксированная цена в договоре, бесплатный расчёт за 15 минут. Статика-С — 9 лет на рынке.">
+<link rel="canonical" href="https://opalubka365.ru/new/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Аренда опалубки в Москве — от 230 ₽/м² | Статика-С">
+<meta property="og:description" content="Отгружаем в день заказа. Цена не вырастет. Без минимального срока.">
+<meta property="og:url" content="https://opalubka365.ru/new/">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Floating CTA -->
+<div class="float-cta" id="floatCta">
+  <button class="float-cta-btn" onclick="openModal()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Получить расчёт
+  </button>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="https://opalubka365.ru" class="logo" aria-label="Статика-С">
+      <img src="img/statica-logo.png" alt="Статика-С" class="logo-img">
+      <div class="logo-text">
+        <span class="logo-name">Статика-С</span>
+        <span class="logo-sub">Аренда опалубки · Москва</span>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="#benefits">Преимущества</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="header-right">
+      <div class="header-msng">
+        <a href="#" class="msg-btn tg" aria-label="Telegram">
+          <img src="img/telegram-logo.png" alt="Telegram">
+        </a>
+        <a href="#" class="msg-btn wa" aria-label="WhatsApp">
+          <img src="img/whatsapp-logo.png" alt="WhatsApp">
+        </a>
+      </div>
+      <a href="tel:+74952302310" class="header-phone">+7 (495) 230-23-10</a>
+      <button class="btn-gold" onclick="openModal()">Оставить заявку</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#benefits" onclick="closeMobileNav()">Преимущества</a>
+    <a href="#catalog" onclick="closeMobileNav()">Каталог</a>
+    <a href="#calc" onclick="closeMobileNav()">Калькулятор</a>
+    <a href="#contact" onclick="closeMobileNav()">Контакты</a>
+    <a href="tel:+74952302310" class="mobile-phone">+7 (495) 230-23-10</a>
+    <button class="btn-gold" onclick="openModal(); closeMobileNav()">Оставить заявку</button>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Москва и МО · Отгружаем сегодня
+      </div>
+      <h1>
+        Аренда<br>
+        <em>опалубки</em><br>
+        в Москве
+      </h1>
+      <div class="hero-price-block">
+        от <span class="hero-price-big">230</span> ₽<span class="hero-price-unit">/м² в месяц</span>
+      </div>
+      <p class="hero-sub">
+        Цена зафиксирована в договоре — не вырастет даже при изменении НДС.<br>
+        Нет минимального срока. Нет залога. Расчёт за 15 минут.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-gold btn-lg" onclick="openModal()">
+          Получить расчёт бесплатно
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a href="tel:+74952302310" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2.5C3 2.2 3.2 2 3.5 2h2.3c.3 0 .5.2.5.4l.7 3a.5.5 0 0 1-.1.4L5.5 7.2c.7 1.5 2 2.7 3.3 3.4l1.4-1.4a.5.5 0 0 1 .5-.1l3 .7c.2 0 .3.2.3.5V12c0 .8-.7 1.5-1.5 1.5A11.5 11.5 0 0 1 1.5 2c0-.8.7-1.5 1.5-1.5z" fill="currentColor"/></svg>
+          Позвонить
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-n">9+</div>
+          <div class="hero-stat-l">лет на рынке</div>
+        </div>
+        <span class="hero-stat-sep"></span>
+        <div class="hero-stat">
+          <div class="hero-stat-n">500+</div>
+          <div class="hero-stat-l">объектов</div>
+        </div>
+        <span class="hero-stat-sep"></span>
+        <div class="hero-stat">
+          <div class="hero-stat-n">0 ₽</div>
+          <div class="hero-stat-l">залог</div>
+        </div>
+        <span class="hero-stat-sep"></span>
+        <div class="hero-stat">
+          <div class="hero-stat-n">24ч</div>
+          <div class="hero-stat-l">отгрузка</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <span class="hero-card-tag">Популярный выбор</span>
+          <div class="hero-card-stars">★★★★★</div>
+        </div>
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="50" width="80" height="8" rx="2" fill="#f4ad3a"/>
+            <rect x="28" y="58" width="8" height="44" rx="2" fill="rgba(255,255,255,.65)"/>
+            <rect x="56" y="58" width="8" height="44" rx="2" fill="rgba(255,255,255,.65)"/>
+            <rect x="84" y="58" width="8" height="44" rx="2" fill="rgba(255,255,255,.65)"/>
+            <rect x="16" y="102" width="88" height="8" rx="2" fill="#f4ad3a"/>
+            <rect x="36" y="30" width="48" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          </svg>
+        </div>
+        <div class="hero-card-name">Опалубка перекрытий</div>
+        <div class="hero-card-price">
+          <span>от</span>
+          <strong>230 ₽</strong>
+          <span>/м² в месяц</span>
+        </div>
+        <ul class="hero-card-list">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#f4ad3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Отгрузка в день заказа
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#f4ad3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Цена зафиксирована в договоре
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#f4ad3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Залог не требуется
+          </li>
+        </ul>
+        <button class="hero-card-cta" onclick="openModal()">Узнать стоимость →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ URGENCY BAR ═══ -->
+<div class="urgency-bar">
+  <div class="urgency-inner">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.4"/><path d="M9 4.5V9.5l3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <span><strong>Цены 2025 года зафиксированы</strong> для новых договоров до конца II квартала — без учёта повышения НДС</span>
+    <button onclick="openModal()">Зафиксировать цену →</button>
+  </div>
+</div>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="benefits" id="benefits">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag reveal">Почему выбирают нас</div>
+      <h2 class="section-title reveal"><strong>Что вы</strong> получаете</h2>
+    </div>
+    <div class="benefits-grid">
+
+      <article class="benefit-card reveal-up" style="--d:0ms">
+        <div class="benefit-n">01</div>
+        <div class="benefit-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 2l2.2 6.8H22l-5.7 4.2 2.2 6.8L13 15.6l-5.5 4.2 2.2-6.8L4 9h6.8L13 2z" fill="currentColor"/></svg>
+        </div>
+        <h3>Цена в договоре не вырастет</h3>
+        <p>Даже если изменится НДС — платите ровно столько, сколько согласовали. Прописываем отдельным пунктом.</p>
+      </article>
+
+      <article class="benefit-card reveal-up" style="--d:70ms">
+        <div class="benefit-n">02</div>
+        <div class="benefit-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="10" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M13 8v5.5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Отгружаем в день заказа</h3>
+        <p>Задержка поставки — одна из главных болей стройки. Мы отгружаем в день заказа, чтобы ваш объект не простаивал.</p>
+      </article>
+
+      <article class="benefit-card reveal-up" style="--d:140ms">
+        <div class="benefit-n">03</div>
+        <div class="benefit-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 13l6 6L22 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Контроль качества перед отгрузкой</h3>
+        <p>Найдёте дефект на объекте — заменим бесплатно. Каждый комплект проходит проверку на нашем складе.</p>
+      </article>
+
+      <article class="benefit-card reveal-up" style="--d:210ms">
+        <div class="benefit-n">04</div>
+        <div class="benefit-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 11h20" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Нет минимального срока</h3>
+        <p>Берите хоть на две недели — платите только за фактический срок. Без навязанных дополнительных месяцев.</p>
+      </article>
+
+      <article class="benefit-card reveal-up" style="--d:280ms">
+        <div class="benefit-n">05</div>
+        <div class="benefit-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3C7 3 3 7 3 13s4 10 10 10 10-4 10-10M13 8v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <h3>Бесплатный инженерный расчёт</h3>
+        <p>Инженер посчитает нужное количество щитов за 15 минут. Бесплатно и без обязательств арендовать.</p>
+      </article>
+
+      <article class="benefit-card reveal-up" style="--d:350ms">
+        <div class="benefit-n">06</div>
+        <div class="benefit-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3s-9 3.5-9 11.5A9 9 0 0 0 13 23a9 9 0 0 0 9-8.5C22 6.5 13 3 13 3z" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M9 13l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Лояльная приёмка при возврате</h3>
+        <p>Без поиска поводов для доначислений. По-человечески и по факту состояния — именно так мы работаем.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CALCULATOR ═══ -->
+<section class="calculator" id="calc">
+  <div class="section-inner calc-inner">
+    <div class="calc-left reveal-left">
+      <div class="section-tag light">Быстрый расчёт</div>
+      <h2>Посчитайте аренду<br><strong>за 30 секунд</strong></h2>
+      <p>Выберите тип опалубки и площадь — получите предварительную стоимость мгновенно.</p>
+      <div class="calc-checks">
+        <div class="calc-check">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l4 4 7-7" stroke="#f4ad3a" stroke-width="2" stroke-linecap="round"/></svg>
+          Цена фиксируется в договоре
+        </div>
+        <div class="calc-check">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l4 4 7-7" stroke="#f4ad3a" stroke-width="2" stroke-linecap="round"/></svg>
+          Расчёт бесплатный, без обязательств
+        </div>
+        <div class="calc-check">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l4 4 7-7" stroke="#f4ad3a" stroke-width="2" stroke-linecap="round"/></svg>
+          Ответ инженера за 15 минут
+        </div>
+      </div>
+    </div>
+    <div class="calc-form-box reveal-right">
+      <div class="calc-form-title">Ваш предварительный расчёт</div>
+      <div class="calc-form">
+        <div class="fg">
+          <label for="calcType">Тип опалубки</label>
+          <div class="sel-wrap">
+            <select id="calcType" onchange="calculate()">
+              <option value="230">Опалубка перекрытий (без фанеры)</option>
+              <option value="290">Опалубка перекрытий (с фанерой)</option>
+              <option value="440">Стеновая — крупный щит</option>
+              <option value="590">Стеновая — мелкий щит</option>
+              <option value="440">Опалубка колонн</option>
+              <option value="300">Объёмная CUPLOCK (без фанеры)</option>
+              <option value="500">Объёмная CUPLOCK (с фанерой)</option>
+            </select>
+            <span class="sel-arrow"></span>
+          </div>
+        </div>
+        <div class="calc-row">
+          <div class="fg">
+            <label for="calcArea">Площадь, м²</label>
+            <input type="number" id="calcArea" value="100" min="1" max="99999" oninput="calculate()">
+          </div>
+          <div class="fg">
+            <label for="calcMonths">Срок, мес.</label>
+            <input type="number" id="calcMonths" value="1" min="1" max="24" oninput="calculate()">
+          </div>
+        </div>
+        <div class="fg">
+          <label for="calcDelivery">Доставка</label>
+          <div class="sel-wrap">
+            <select id="calcDelivery" onchange="calculate()">
+              <option value="0">Самовывоз (бесплатно)</option>
+              <option value="15000">Нужна доставка (+15 000 ₽)</option>
+            </select>
+            <span class="sel-arrow"></span>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-info">
+            <div class="calc-result-label">Предварительная стоимость</div>
+            <div class="calc-result-note">Точная сумма — после инженерного расчёта</div>
+          </div>
+          <div class="calc-result-val" id="calcResult">23 000 ₽</div>
+        </div>
+        <button class="btn-gold w-full" onclick="openModal()">
+          Получить точный расчёт →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CATALOG ═══ -->
+<section class="catalog" id="catalog">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag reveal">Что сдаём в аренду</div>
+      <h2 class="section-title reveal"><strong>Каталог</strong> оборудования</h2>
+    </div>
+    <div class="catalog-grid">
+
+      <div class="cat-card popular reveal-up" style="--d:0ms">
+        <div class="cat-popular-badge">Топ выбор</div>
+        <div class="cat-img">
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <rect x="9" y="22" width="50" height="6" rx="2" fill="#f4ad3a"/>
+            <rect x="15" y="28" width="7" height="32" rx="2" fill="#888"/>
+            <rect x="31" y="28" width="7" height="32" rx="2" fill="#888"/>
+            <rect x="47" y="28" width="7" height="32" rx="2" fill="#888"/>
+            <rect x="5" y="60" width="58" height="6" rx="2" fill="#f4ad3a"/>
+          </svg>
+        </div>
+        <div class="cat-body">
+          <div class="cat-title">Опалубка перекрытий</div>
+          <div class="cat-desc">Для монолитных перекрытий жилых и промышленных зданий</div>
+          <div class="cat-price-row">
+            <span class="cat-from">от</span>
+            <span class="cat-price">230</span>
+            <span class="cat-unit">₽/м² в мес.</span>
+          </div>
+        </div>
+        <button class="cat-btn" onclick="openModal()">Узнать под мой объём</button>
+      </div>
+
+      <div class="cat-card reveal-up" style="--d:70ms">
+        <div class="cat-img">
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <rect x="9" y="9" width="21" height="50" rx="2" fill="#f4ad3a"/>
+            <rect x="37" y="9" width="21" height="50" rx="2" fill="#999"/>
+            <rect x="11" y="21" width="17" height="3" rx="1" fill="#fff" opacity=".3"/>
+          </svg>
+        </div>
+        <div class="cat-body">
+          <div class="cat-title">Стеновая — крупный щит</div>
+          <div class="cat-desc">Для стен многоэтажных домов и коммерческих объектов</div>
+          <div class="cat-price-row">
+            <span class="cat-from">от</span>
+            <span class="cat-price">440</span>
+            <span class="cat-unit">₽/м² в мес.</span>
+          </div>
+        </div>
+        <button class="cat-btn" onclick="openModal()">Узнать под мой объём</button>
+      </div>
+
+      <div class="cat-card reveal-up" style="--d:140ms">
+        <div class="cat-img">
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <rect x="22" y="7" width="24" height="54" rx="2" fill="#f4ad3a"/>
+            <rect x="17" y="61" width="34" height="5" rx="2" fill="#999"/>
+            <rect x="24" y="11" width="20" height="4" rx="1" fill="#fff" opacity=".25"/>
+          </svg>
+        </div>
+        <div class="cat-body">
+          <div class="cat-title">Опалубка колонн</div>
+          <div class="cat-desc">Для колонн высотой от 3 до 4,5 метров</div>
+          <div class="cat-price-row">
+            <span class="cat-from">от</span>
+            <span class="cat-price">440</span>
+            <span class="cat-unit">₽/м² в мес.</span>
+          </div>
+        </div>
+        <button class="cat-btn" onclick="openModal()">Узнать под мой объём</button>
+      </div>
+
+      <div class="cat-card reveal-up" style="--d:210ms">
+        <div class="cat-img">
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <rect x="9" y="22" width="50" height="6" rx="2" fill="#f4ad3a"/>
+            <rect x="9" y="9" width="6" height="50" rx="2" fill="#999"/>
+            <rect x="22" y="9" width="6" height="50" rx="2" fill="#999"/>
+            <rect x="35" y="9" width="6" height="50" rx="2" fill="#999"/>
+            <rect x="48" y="9" width="6" height="50" rx="2" fill="#999"/>
+            <rect x="9" y="42" width="50" height="6" rx="2" fill="#f4ad3a"/>
+          </svg>
+        </div>
+        <div class="cat-body">
+          <div class="cat-title">Объёмная опалубка CUPLOCK</div>
+          <div class="cat-desc">Для высотных перекрытий на объёмных стойках</div>
+          <div class="cat-price-row">
+            <span class="cat-from">от</span>
+            <span class="cat-price">300</span>
+            <span class="cat-unit">₽/м² в мес.</span>
+          </div>
+        </div>
+        <button class="cat-btn" onclick="openModal()">Узнать под мой объём</button>
+      </div>
+
+      <div class="cat-card reveal-up" style="--d:280ms">
+        <div class="cat-img">
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <rect x="13" y="9" width="18" height="50" rx="2" fill="#f4ad3a"/>
+            <rect x="37" y="9" width="18" height="50" rx="2" fill="#f4ad3a" opacity=".45"/>
+            <rect x="15" y="21" width="14" height="3" rx="1" fill="#fff" opacity=".3"/>
+          </svg>
+        </div>
+        <div class="cat-body">
+          <div class="cat-title">Мелкощитовая опалубка</div>
+          <div class="cat-desc">Для фундаментов, стен частных домов и малоэтажек</div>
+          <div class="cat-price-row">
+            <span class="cat-from">от</span>
+            <span class="cat-price">590</span>
+            <span class="cat-unit">₽/м² в мес.</span>
+          </div>
+        </div>
+        <button class="cat-btn" onclick="openModal()">Узнать под мой объём</button>
+      </div>
+
+      <div class="cat-card reveal-up" style="--d:350ms">
+        <div class="cat-img">
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <rect x="9" y="9" width="50" height="50" rx="2" fill="#f4ad3a" opacity=".18"/>
+            <rect x="9" y="9" width="50" height="50" rx="2" stroke="#f4ad3a" stroke-width="2" fill="none"/>
+            <line x1="9" y1="34" x2="59" y2="34" stroke="#f4ad3a" stroke-width="1.5"/>
+            <line x1="34" y1="9" x2="34" y2="59" stroke="#f4ad3a" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="cat-body">
+          <div class="cat-title">Ламинированная фанера</div>
+          <div class="cat-desc">Аренда и продажа для любых опалубочных систем</div>
+          <div class="cat-price-row">
+            <span class="cat-from">от</span>
+            <span class="cat-price">220</span>
+            <span class="cat-unit">₽/м² в мес.</span>
+          </div>
+        </div>
+        <button class="cat-btn" onclick="openModal()">Узнать под мой объём</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-head centered">
+      <div class="section-tag reveal">Прозрачно и быстро</div>
+      <h2 class="section-title reveal"><strong>Как мы</strong> работаем</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal-up" style="--d:0ms">
+        <div class="step-num">1</div>
+        <h4>Заявка</h4>
+        <p>Оставляете заявку на сайте или звоните нам</p>
+      </div>
+      <div class="step-arrow reveal-up" style="--d:50ms">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal-up" style="--d:100ms">
+        <div class="step-num">2</div>
+        <h4>Расчёт</h4>
+        <p>Инженер бесплатно считает комплект за 15 минут</p>
+      </div>
+      <div class="step-arrow reveal-up" style="--d:150ms">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal-up" style="--d:200ms">
+        <div class="step-num">3</div>
+        <h4>Договор</h4>
+        <p>Подписываем договор с фиксированной ценой</p>
+      </div>
+      <div class="step-arrow reveal-up" style="--d:250ms">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal-up" style="--d:300ms">
+        <div class="step-num">4</div>
+        <h4>Доставка</h4>
+        <p>Отгружаем в день заказа по Москве и МО</p>
+      </div>
+      <div class="step-arrow reveal-up" style="--d:350ms">
+        <svg viewBox="0 0 40 16" fill="none"><path d="M0 8h36M30 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal-up" style="--d:400ms">
+        <div class="step-num">5</div>
+        <h4>Возврат</h4>
+        <p>Лояльная приёмка. Залог — в течение 3 дней</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="reviews">
+  <div class="section-inner">
+    <div class="section-head centered">
+      <div class="section-tag light reveal">Доверие клиентов</div>
+      <h2 class="section-title light reveal"><strong>Отзывы</strong> клиентов</h2>
+    </div>
+    <div class="reviews-grid">
+
+      <div class="review-card reveal-up" style="--d:0ms">
+        <div class="review-q">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p>Брали опалубку на фундамент дома 8×10. Привезли на следующий день после договора, как и обещали. Никаких доплат по факту — цена совпала с расчётом. Залог вернули через 3 дня. Буду брать ещё на перекрытие.</p>
+        <div class="review-author">
+          <div class="review-ava">АК</div>
+          <div>
+            <div class="review-name">Андрей К.</div>
+            <div class="review-role">Прораб, Москва</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal-up" style="--d:100ms">
+        <div class="review-q">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p>Сравнивал с другими — здесь не было минимального срока аренды, это решило вопрос. Взял на 2,5 недели под стены. Инженер посчитал количество щитов — взял ровно столько, сколько надо, без излишков.</p>
+        <div class="review-author">
+          <div class="review-ava">СМ</div>
+          <div>
+            <div class="review-name">Сергей Михайлов</div>
+            <div class="review-role">Частный застройщик, МО</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal-up" style="--d:200ms">
+        <div class="review-q">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p>Работаем с ними второй год. Опалубка приходит чистая, без погнутых элементов. Если что не так — сразу меняют. Удобно, что можно брать поэлементно — не нужно переплачивать за комплект.</p>
+        <div class="review-author">
+          <div class="review-ava">ДР</div>
+          <div>
+            <div class="review-name">Дмитрий Р.</div>
+            <div class="review-role">Бригадир</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<section class="cta-banner">
+  <div class="section-inner">
+    <div class="cta-banner-inner reveal-zoom">
+      <div class="cta-banner-left">
+        <div class="cta-tag">Действует до 30 июня 2025</div>
+        <h2>Фиксация цен 2025 года<br>для новых договоров</h2>
+        <p>Без учёта повышения НДС. Предложение ограничено — успейте зафиксировать стоимость.</p>
+      </div>
+      <div class="cta-banner-right">
+        <button class="btn-gold btn-lg" onclick="openModal()">Узнать стоимость</button>
+        <a href="tel:+74952302310" class="cta-phone-link">+7 (495) 230-23-10</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORM ═══ -->
+<section class="form-section" id="contact">
+  <div class="section-inner form-inner">
+    <div class="form-contacts reveal-left">
+      <div class="section-tag">Свяжитесь с нами</div>
+      <h2>Получите <strong>бесплатный расчёт</strong></h2>
+      <p>Оставьте заявку — инженер подберёт оптимальный комплект для вашего объекта и перезвонит за 15 минут.</p>
+      <div class="cinfo-list">
+        <a href="tel:+74952302310" class="cinfo-item">
+          <div class="cinfo-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2.5C3 2.2 3.2 2 3.5 2h2.3c.3 0 .5.2.5.4l.7 3a.5.5 0 0 1-.1.4L5.5 7.2c.7 1.5 2 2.7 3.3 3.4l1.4-1.4a.5.5 0 0 1 .5-.1l3 .7c.2 0 .3.2.3.5V12c0 .8-.7 1.5-1.5 1.5A11.5 11.5 0 0 1 1.5 2c0-.8.7-1.5 1.5-1.5z" fill="currentColor"/></svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Телефон</div>
+            <div class="cinfo-val">+7 (495) 230-23-10</div>
+          </div>
+        </a>
+        <a href="mailto:info@opalubka365.ru" class="cinfo-item">
+          <div class="cinfo-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M2 6.5l7 4.5 7-4.5" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Email</div>
+            <div class="cinfo-val">info@opalubka365.ru</div>
+          </div>
+        </a>
+        <div class="cinfo-item">
+          <div class="cinfo-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2a5 5 0 0 0-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="currentColor"/></svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Зона работы</div>
+            <div class="cinfo-val">Москва и Московская область</div>
+          </div>
+        </div>
+      </div>
+      <div class="cinfo-msng">
+        <span>Написать в мессенджере:</span>
+        <div class="cinfo-msng-btns">
+          <a href="#" class="msg-btn tg" aria-label="Telegram"><img src="img/telegram-logo.png" alt="Telegram" loading="lazy"></a>
+          <a href="#" class="msg-btn wa" aria-label="WhatsApp"><img src="img/whatsapp-logo.png" alt="WhatsApp" loading="lazy"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box reveal-right">
+      <h3>Оставить заявку</h3>
+      <p>Заполните форму — перезвоним и подберём комплект</p>
+      <div class="form-required-note">Поля, отмеченные <strong>*</strong>, обязательны.</div>
+      <form class="lead-form" novalidate>
+        <div class="fg">
+          <label class="field-required" for="f-name">Ваше имя</label>
+          <input type="text" id="f-name" name="name" placeholder="Представьтесь, пожалуйста" required>
+        </div>
+        <div class="fg">
+          <label class="field-required" for="f-phone">Телефон</label>
+          <input type="tel" id="f-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+        </div>
+        <div class="fg">
+          <label for="f-comment">Комментарий</label>
+          <textarea id="f-comment" name="comment" placeholder="Опишите ваш объект (необязательно)"></textarea>
+        </div>
+        <div class="captcha-box" aria-hidden="true">
+          <div class="captcha-checkbox"></div>
+          <div class="captcha-text">Я не робот</div>
+          <div class="captcha-badge">CAPTCHA<span>заглушка</span></div>
+        </div>
+        <button class="btn-gold w-full" type="submit">Отправить заявку</button>
+        <div class="form-error" aria-live="polite"></div>
+        <div class="form-success" aria-live="polite">Заявка принята! Перезвоним в течение 20 минут.</div>
+      </form>
+      <div class="form-after">Перезвоним в рабочее время. Если не готовы говорить — напишем в WhatsApp.</div>
+      <div class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="https://opalubka365.ru" class="logo footer-logo" aria-label="Статика-С">
+          <img src="img/statica-logo.png" alt="Статика-С" class="logo-img" loading="lazy">
+          <div class="logo-text">
+            <span class="logo-name">Статика-С</span>
+            <span class="logo-sub">Аренда профессиональной опалубки</span>
+          </div>
+        </a>
+        <p class="footer-desc">9 лет на рынке. 500+ оснащённых объектов. Фиксированные цены и отгрузка в день заказа.</p>
+        <div class="footer-social">
+          <a href="#" class="msg-btn tg footer-msg" aria-label="Telegram"><img src="img/telegram-logo.png" alt="Telegram" loading="lazy"></a>
+          <a href="#" class="msg-btn wa" aria-label="WhatsApp"><img src="img/whatsapp-logo.png" alt="WhatsApp" loading="lazy"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-h">Информация</div>
+        <ul>
+          <li><a href="https://opalubka365.ru/calc/">Рассчитать стоимость</a></li>
+          <li><a href="https://opalubka365.ru/remont-opalubki.html">Ремонт опалубки</a></li>
+          <li><a href="https://opalubka365.ru/prajs-list.html">Прайс-лист</a></li>
+          <li><a href="https://opalubka365.ru/blog/">Блог</a></li>
+          <li><a href="https://opalubka365.ru/kontaktyi.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-h">Услуги</div>
+        <ul>
+          <li><a href="https://opalubka365.ru/opalubka-perekryitij.html">Опалубка перекрытий</a></li>
+          <li><a href="https://opalubka365.ru/opalubka-sten.html">Опалубка стен</a></li>
+          <li><a href="https://opalubka365.ru/opalubka-kolonn.html">Опалубка колонн</a></li>
+          <li><a href="https://opalubka365.ru/laminirovannaya-fanera.html">Фанера ламинированная</a></li>
+          <li><a href="https://opalubka365.ru/vyikup-opalubki.html">Выкуп опалубки</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-h">Контакты</div>
+        <a href="tel:+74952302310" class="footer-phone">+7 (495) 230-23-10</a>
+        <div class="footer-clabel">Телефон</div>
+        <a href="mailto:info@opalubka365.ru" class="footer-email">info@opalubka365.ru</a>
+        <div class="footer-clabel">Email</div>
+        <button class="btn-gold footer-btn" onclick="openModal()">Оставить заявку</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2015–2025 ООО «СТАТИКА». Все права защищены.</span>
+      <div>
+        <a href="#">Пользовательское соглашение</a>
+        <a href="#">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Закрыть">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal-tag">Бесплатно · 15 минут</div>
+    <h3>Узнать стоимость под мой объект</h3>
+    <p>Инженер перезвонит за 15 минут и подберёт оптимальный комплект</p>
+    <div class="form-required-note">Поля, отмеченные <strong>*</strong>, обязательны.</div>
+    <form class="lead-form lead-form-modal" novalidate>
+      <div class="fg">
+        <label class="field-required" for="modal-name">Ваше имя</label>
+        <input type="text" id="modal-name" name="name" placeholder="Представьтесь, пожалуйста" required>
+      </div>
+      <div class="fg">
+        <label class="field-required" for="modal-phone">Телефон</label>
+        <input type="tel" id="modal-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div class="captcha-box" aria-hidden="true">
+        <div class="captcha-checkbox"></div>
+        <div class="captcha-text">Я не робот</div>
+        <div class="captcha-badge">CAPTCHA<span>заглушка</span></div>
+      </div>
+      <button class="btn-gold w-full" type="submit">Получить расчёт</button>
+      <div class="form-error" aria-live="polite"></div>
+      <div class="form-success" aria-live="polite">Заявка принята! Перезвоним в течение 20 минут.</div>
+    </form>
+    <div class="form-after">Перезвоним в рабочее время. Если не готовы — напишем в WhatsApp.</div>
+    <div class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
+  </div>
+</div>
+
+<!-- Mobile sticky bar -->
+<div class="mobile-bar">
+  <a href="tel:+74952302310" class="mbar-call">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2.5C3 2.2 3.2 2 3.5 2h2.3c.3 0 .5.2.5.4l.7 3a.5.5 0 0 1-.1.4L5.5 7.2c.7 1.5 2 2.7 3.3 3.4l1.4-1.4a.5.5 0 0 1 .5-.1l3 .7c.2 0 .3.2.3.5V12c0 .8-.7 1.5-1.5 1.5A11.5 11.5 0 0 1 1.5 2c0-.8.7-1.5 1.5-1.5z" fill="currentColor"/></svg>
+    Позвонить
+  </a>
+  <button class="mbar-cta" onclick="openModal()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    Получить расчёт
+  </button>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Статика-С",
+  "description": "Аренда опалубки в Москве и Московской области",
+  "url": "https://opalubka365.ru",
+  "telephone": "+7-495-230-23-10",
+  "email": "info@opalubka365.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва и МО",
+    "addressCountry": "RU"
+  },
+  "priceRange": "от 230 ₽/м²"
+}
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>
