@@ -132,18 +132,17 @@ $body    = <<<HTML
 </html>
 HTML;
 
-$mailResult = smtpSend(
-    SMTP_HOST, SMTP_PORT,
-    SMTP_USER, SMTP_PASS,
-    MAIL_FROM, MAIL_FROM_NAME,
-    MAIL_TO,   MAIL_TO_NAME,
-    $subject,  $body
-);
-
-if (!$mailResult['ok']) {
-    // Заявка сохранена в CSV, но письмо не ушло — логируем ошибку
-    error_log('[Статика-С] Ошибка SMTP: ' . $mailResult['error']);
-    // Не возвращаем ошибку пользователю — данные уже в CSV
+foreach (MAIL_RECIPIENTS as $recipient) {
+    $mailResult = smtpSend(
+        SMTP_HOST, SMTP_PORT,
+        SMTP_USER, SMTP_PASS,
+        MAIL_FROM, MAIL_FROM_NAME,
+        $recipient['email'], $recipient['name'],
+        $subject, $body
+    );
+    if (!$mailResult['ok']) {
+        error_log('[Статика-С] Ошибка SMTP для ' . $recipient['email'] . ': ' . $mailResult['error']);
+    }
 }
 
 echo json_encode(['ok' => true]);

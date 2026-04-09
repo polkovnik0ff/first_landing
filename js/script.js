@@ -112,6 +112,13 @@ function openModal() {
 function closeModal() {
   document.getElementById('modal').classList.remove('active');
   document.body.style.overflow = '';
+  // Сбрасываем состояние благодарности для следующего открытия
+  const form = document.querySelector('.lead-form-modal');
+  const thankYou = document.getElementById('modalThankYou');
+  const disclaimer = document.getElementById('modalDisclaimer');
+  if (form) form.style.display = '';
+  if (thankYou) thankYou.style.display = 'none';
+  if (disclaimer) disclaimer.style.display = '';
 }
 document.getElementById('modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
@@ -126,6 +133,69 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// ═══ Маска телефона ═══
+function initPhoneMask(input) {
+  const MASK  = '+7 (___) ___-__-__';
+  const SLOTS = [4, 5, 6, 9, 10, 11, 13, 14, 16, 17]; // позиции _ в маске
+
+  // Извлечь только цифры абонента (без кода страны)
+  function toDigits(val) {
+    let d = val.replace(/\D/g, '');
+    if (d.startsWith('8') || d.startsWith('7')) d = d.slice(1);
+    return d.slice(0, 10);
+  }
+
+  // Вставить цифры в шаблон маски
+  function render(digits) {
+    const chars = MASK.split('');
+    [...digits].forEach((ch, i) => { chars[SLOTS[i]] = ch; });
+    return chars.join('');
+  }
+
+  // Позиция курсора после последней введённой цифры
+  function nextSlot(digits) {
+    return digits.length < SLOTS.length ? SLOTS[digits.length] : MASK.length;
+  }
+
+  // Применить маску и поставить курсор
+  function apply(digits) {
+    input.value = render(digits);
+    const pos = nextSlot(digits);
+    input.setSelectionRange(pos, pos);
+  }
+
+  input.addEventListener('focus', () => {
+    if (!input.value) apply('');
+    else {
+      const pos = nextSlot(toDigits(input.value));
+      input.setSelectionRange(pos, pos);
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    // Очищаем поле если не введено ни одной цифры — вернётся placeholder
+    if (toDigits(input.value).length === 0) input.value = '';
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      apply(toDigits(input.value).slice(0, -1));
+    }
+  });
+
+  input.addEventListener('input', () => {
+    apply(toDigits(input.value));
+  });
+
+  input.addEventListener('paste', (e) => {
+    e.preventDefault();
+    apply(toDigits(e.clipboardData.getData('text')));
+  });
+}
+
+document.querySelectorAll('input[type="tel"]').forEach(initPhoneMask);
+
 // ═══ Отправка форм ═══
 document.querySelectorAll('.lead-form').forEach((form) => {
   form.addEventListener('submit', function(e) {
@@ -139,18 +209,27 @@ document.querySelectorAll('.lead-form').forEach((form) => {
     if (success) { success.classList.remove('visible'); }
 
     // Клиентская валидация
-    let hasEmpty = false;
+    let hasError = false;
+    let errorMsg = '';
+
     form.querySelectorAll('[required]').forEach((field) => {
-      if (!field.value.trim()) {
+      const isEmpty = !field.value.trim();
+      const isPhone = field.type === 'tel';
+      const phoneIncomplete = isPhone && field.value.replace(/\D/g, '').length < 11;
+
+      if (isEmpty || phoneIncomplete) {
         field.style.borderColor = '#d83b2d';
-        hasEmpty = true;
+        if (!hasError) {
+          errorMsg = isPhone && !isEmpty ? 'Введите полный номер телефона.' : 'Заполните обязательные поля.';
+        }
+        hasError = true;
       } else {
         field.style.borderColor = '';
       }
     });
 
-    if (hasEmpty) {
-      if (error) { error.textContent = 'Заполните обязательные поля.'; error.classList.add('visible'); }
+    if (hasError) {
+      if (error) { error.textContent = errorMsg; error.classList.add('visible'); }
       return;
     }
 
@@ -166,10 +245,15 @@ document.querySelectorAll('.lead-form').forEach((form) => {
       .then(r => r.json())
       .then(res => {
         if (res.ok) {
-          if (success) success.classList.add('visible');
           form.reset();
           if (form.classList.contains('lead-form-modal')) {
-            setTimeout(closeModal, 1500);
+            form.style.display = 'none';
+            const thankYou = document.getElementById('modalThankYou');
+            const disclaimer = document.getElementById('modalDisclaimer');
+            if (thankYou) thankYou.style.display = 'block';
+            if (disclaimer) disclaimer.style.display = 'none';
+          } else {
+            if (success) success.classList.add('visible');
           }
         } else {
           if (error) { error.textContent = res.error || 'Ошибка отправки. Попробуйте позже.'; error.classList.add('visible'); }

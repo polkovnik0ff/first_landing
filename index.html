@@ -28,7 +28,6 @@
 <header class="header">
   <div class="header-top">
     <a href="https://opalubka365.ru" class="logo-area" aria-label="Статика-С">
-      <img src="img/statica-logo.png" alt="Статика-С" class="logo-img">
       <div class="logo-text">
         <span class="logo-name">Статика-С</span>
         <span class="logo-sub">Аренда опалубки · Москва</span>
@@ -497,10 +496,14 @@
       </div>
       <button class="btn-submit" type="submit">Получить расчёт</button>
       <div class="form-error" aria-live="polite"></div>
-      <div class="form-success" aria-live="polite">Заявка принята! Перезвоним в течение 20 минут.</div>
     </form>
-    <div class="form-after" style="margin-top:12px;">Перезвоним в течение 20 минут в рабочее время.<br>Если не готовы говорить — напишем в WhatsApp.</div>
-    <div class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</div>
+    <div class="modal-thank-you" id="modalThankYou" style="display:none;text-align:center;padding:24px 0 8px;">
+      <div style="font-size:40px;margin-bottom:12px;">✓</div>
+      <h3 style="margin:0 0 8px;">Спасибо за заявку!</h3>
+      <p style="margin:0 0 20px;color:#666;">Наш менеджер свяжется с вами<br>в течение 20 минут.</p>
+      <button class="btn-submit" onclick="closeModal()" style="max-width:220px;margin:0 auto;">Закрыть</button>
+    </div>
+    <div class="form-disclaimer" id="modalDisclaimer">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</div>
   </div>
 </div>
 
