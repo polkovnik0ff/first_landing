@@ -92,15 +92,22 @@ calculate();
 initCustomSelect();
 initFormSectionGlow();
 
+// ═══ Calculator inputs ═══
+document.getElementById('calcType')?.addEventListener('change', calculate);
+document.getElementById('calcArea')?.addEventListener('input', calculate);
+document.getElementById('calcMonths')?.addEventListener('input', calculate);
+document.getElementById('calcDelivery')?.addEventListener('change', calculate);
+
 // ═══ Scroll reveal ═══
-const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom');
+const reveals = Array.from(document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom'));
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
+  entries
+    .filter(e => e.isIntersecting)
+    .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+    .forEach((entry, i) => {
       setTimeout(() => entry.target.classList.add('visible'), i * 70);
       observer.unobserve(entry.target);
-    }
-  });
+    });
 }, { threshold: 0.12 });
 reveals.forEach(el => observer.observe(el));
 
@@ -123,6 +130,13 @@ function closeModal() {
 document.getElementById('modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
+
+// ═══ Modal triggers ═══
+document.querySelectorAll('.btn-header, .btn-hero, .btn-calc, .cat-cta, .btn-promo').forEach(btn => {
+  btn.addEventListener('click', openModal);
+});
+document.querySelector('.modal-close')?.addEventListener('click', closeModal);
+document.querySelector('#modalThankYou .btn-submit')?.addEventListener('click', closeModal);
 
 // ═══ Smooth scroll ═══
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -218,13 +232,13 @@ document.querySelectorAll('.lead-form').forEach((form) => {
       const phoneIncomplete = isPhone && field.value.replace(/\D/g, '').length < 11;
 
       if (isEmpty || phoneIncomplete) {
-        field.style.borderColor = '#d83b2d';
+        field.classList.add('has-error');
         if (!hasError) {
           errorMsg = isPhone && !isEmpty ? 'Введите полный номер телефона.' : 'Заполните обязательные поля.';
         }
         hasError = true;
       } else {
-        field.style.borderColor = '';
+        field.classList.remove('has-error');
       }
     });
 
@@ -246,6 +260,7 @@ document.querySelectorAll('.lead-form').forEach((form) => {
       .then(res => {
         if (res.ok) {
           form.reset();
+          form.querySelectorAll('.has-error').forEach(f => f.classList.remove('has-error'));
           if (form.classList.contains('lead-form-modal')) {
             form.style.display = 'none';
             const thankYou = document.getElementById('modalThankYou');
@@ -269,7 +284,4 @@ document.querySelectorAll('.lead-form').forEach((form) => {
   });
 });
 
-  window.openModal  = openModal;
-  window.closeModal = closeModal;
-  window.calculate  = calculate;
 })();

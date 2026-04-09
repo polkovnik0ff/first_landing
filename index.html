@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Аренда опалубки в Москве — от 230 ₽/м² | Статика  -  С</title>
+<title>Аренда опалубки в Москве — от 230 ₽/м² | Статика-С</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap"></noscript>
 
 <!-- SEO -->
 <meta name="description" content="Аренда опалубки в Москве и МО от 230 ₽/м². Отгрузка в день заказа, фиксированная цена в договоре, бесплатный инженерный расчёт за 15 минут. Компания Статика-С.">
@@ -43,7 +44,7 @@
         </a>
       </div>
       <a href="tel:+74952302310" class="header-phone">+7 (495) 230-23-10</a>
-      <button class="btn-header" onclick="openModal()">Оставить заявку</button>
+      <button class="btn-header">Оставить заявку</button>
     </div>
   </div>
 </header>
@@ -55,7 +56,7 @@
     <h1><strong>Аренда опалубки</strong> в Москве — <strong>от 230 ₽/м²</strong> в месяц</h1>
     <p class="hero-sub">Отгружаем в день заказа. Цена не вырастет после подписания договора.<br>Без минимального срока — берите хоть на 2 недели.</p>
     <div class="hero-cta-wrap">
-      <button class="btn-hero" onclick="openModal()">→ Узнать стоимость под мой объект</button>
+      <button class="btn-hero">→ Узнать стоимость под мой объект</button>
       <div class="hero-micro"><span class="dot"></span> Расчёт за 15 минут</div>
     </div>
     <div class="hero-stats">
@@ -114,8 +115,7 @@
       <h2>Посчитайте аренду <strong>за 30 секунд</strong></h2>
       <p>Выберите тип опалубки и укажите площадь — получите предварительную стоимость мгновенно. Для точного расчёта оставьте контакты.</p>
       <div class="calc-visual reveal-zoom" aria-hidden="true">
-        <div class="calc-note">Иллюстрация / заглушка</div>
-        <div class="calc-placeholder">
+<div class="calc-placeholder">
           <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="86" y="40" width="248" height="18" rx="4" fill="#F4AD3A"/>
             <rect x="104" y="58" width="16" height="132" rx="3" fill="#7A746D"/>
@@ -145,7 +145,7 @@
             <div class="custom-select-option" data-value="300" role="option" aria-selected="false">Объёмная CUPLOCK (без фанеры)</div>
             <div class="custom-select-option" data-value="500" role="option" aria-selected="false">Объёмная CUPLOCK (с фанерой)</div>
           </div>
-          <select id="calcType" class="custom-select-native" onchange="calculate()">
+          <select id="calcType" class="custom-select-native">
           <option value="230">Опалубка перекрытий (без фанеры)</option>
           <option value="290">Опалубка перекрытий (с фанерой)</option>
           <option value="440">Стеновая — крупный щит</option>
@@ -159,17 +159,17 @@
       </div>
       <div class="calc-group">
         <label for="calcArea">Площадь, м²</label>
-        <input type="number" id="calcArea" value="100" min="1" max="99999" oninput="calculate()">
+        <input type="number" id="calcArea" value="100" min="1" max="99999">
       </div>
       <div class="calc-group">
         <label for="calcMonths">Срок аренды, месяцев</label>
-        <input type="number" id="calcMonths" value="1" min="1" max="24" oninput="calculate()">
+        <input type="number" id="calcMonths" value="1" min="1" max="24">
       </div>
 
       <div class="calc-group">
         <label for="calcDelivery">Нужна доставка</label>
         <div class="select-wrap">
-          <select id="calcDelivery" onchange="calculate()">
+          <select id="calcDelivery">
             <option value="0">Нет, самовывоз</option>
             <option value="15000">Да, нужна доставка</option>
           </select>
@@ -181,7 +181,7 @@
         <div class="calc-result-value" id="calcResult">23 000 ₽</div>
         <div class="calc-result-note">Точная сумма зависит от конфигурации объекта</div>
       </div>
-      <button class="btn-calc" onclick="openModal()">Получить точный расчёт по телефону</button>
+      <button class="btn-calc">Получить точный расчёт по телефону</button>
     </div>
   </div>
 </section>
@@ -205,7 +205,7 @@
           <span class="cat-price-unit">₽/м² в месяц</span>
         </div>
       </div>
-      <button class="cat-cta" onclick="openModal()">Узнать под мой объём</button>
+      <button class="cat-cta">Узнать под мой объём</button>
     </div>
 
     <div class="cat-card reveal-zoom">
@@ -221,7 +221,7 @@
           <span class="cat-price-unit">₽/м² в месяц</span>
         </div>
       </div>
-      <button class="cat-cta" onclick="openModal()">Узнать под мой объём</button>
+      <button class="cat-cta">Узнать под мой объём</button>
     </div>
 
     <div class="cat-card reveal-zoom">
@@ -237,7 +237,7 @@
           <span class="cat-price-unit">₽/м² в месяц</span>
         </div>
       </div>
-      <button class="cat-cta" onclick="openModal()">Узнать под мой объём</button>
+      <button class="cat-cta">Узнать под мой объём</button>
     </div>
 
     <div class="cat-card reveal-zoom">
@@ -253,7 +253,7 @@
           <span class="cat-price-unit">₽/м² в месяц</span>
         </div>
       </div>
-      <button class="cat-cta" onclick="openModal()">Узнать под мой объём</button>
+      <button class="cat-cta">Узнать под мой объём</button>
     </div>
 
     <div class="cat-card reveal-zoom">
@@ -269,7 +269,7 @@
           <span class="cat-price-unit">₽/м² в месяц</span>
         </div>
       </div>
-      <button class="cat-cta" onclick="openModal()">Узнать под мой объём</button>
+      <button class="cat-cta">Узнать под мой объём</button>
     </div>
 
     <div class="cat-card reveal-zoom">
@@ -285,7 +285,7 @@
           <span class="cat-price-unit">₽/м² в месяц</span>
         </div>
       </div>
-      <button class="cat-cta" onclick="openModal()">Узнать под мой объём</button>
+      <button class="cat-cta">Узнать под мой объём</button>
     </div>
   </div>
 </section>
@@ -358,7 +358,7 @@
       Фиксация цен 2025 года для новых договоров
       <span>Предложение действует до конца II квартала — без учёта повышения НДС</span>
     </div>
-    <button class="btn-promo" onclick="openModal()">Узнать стоимость</button>
+    <button class="btn-promo">Узнать стоимость</button>
   </div>
 </section>
 
@@ -425,7 +425,6 @@
     <div class="footer-top">
       <div>
         <a href="https://opalubka365.ru" class="logo-area footer-brand" aria-label="Статика-С">
-          <img src="img/statica-logo.png" alt="Статика-С" class="logo-img">
           <div class="logo-text">
             <span class="logo-name">Статика-С</span>
             <span class="logo-sub">Аренда профессиональной опалубки</span>
@@ -469,7 +468,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2015–2025 ООО «СТАТИКА». Все права защищены.</span>
+      <span>© 2015–2026 ООО «СТАТИКА». Все права защищены.</span>
       <div>
         <a href="#">Пользовательское соглашение</a>
         <a href="#">Политика конфиденциальности</a>
@@ -481,7 +480,7 @@
 <!-- ═══════════ MODAL ═══════════ -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-close">✕</button>
     <h3>Узнать стоимость под мой объект</h3>
     <p>Оставьте контакты — инженер перезвонит за 15 минут</p>
     <div class="form-required-note">Поля, отмеченные <strong>*</strong>, обязательны для заполнения.</div>
@@ -501,7 +500,7 @@
       <div style="font-size:40px;margin-bottom:12px;">✓</div>
       <h3 style="margin:0 0 8px;">Спасибо за заявку!</h3>
       <p style="margin:0 0 20px;color:#666;">Наш менеджер свяжется с вами<br>в течение 20 минут.</p>
-      <button class="btn-submit" onclick="closeModal()" style="max-width:220px;margin:0 auto;">Закрыть</button>
+      <button class="btn-submit" style="max-width:220px;margin:0 auto;">Закрыть</button>
     </div>
     <div class="form-disclaimer" id="modalDisclaimer">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</div>
   </div>

@@ -209,6 +209,13 @@ body {
   text-transform: uppercase; letter-spacing: 1px;
   color: var(--gold); margin-bottom: 8px;
 }
+.calc-group input[type="number"]::-webkit-inner-spin-button,
+.calc-group input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.calc-group input[type="number"] { -moz-appearance: textfield; }
+
 .calc-group select, .calc-group input[type="number"] {
   width: 100%; padding: 14px 16px; border: 2px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.05); color: var(--white);
@@ -464,11 +471,12 @@ body {
 .review-card {
   background: var(--white); border: 1px solid var(--border); padding: 32px;
   transition: box-shadow 0.3s;
+  display: flex; flex-direction: column;
 }
 .review-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 
 .review-stars { color: var(--gold); font-size: 18px; margin-bottom: 16px; letter-spacing: 2px; }
-.review-text { font-size: 15px; line-height: 1.7; color: #444; margin-bottom: 20px; }
+.review-text { font-size: 15px; line-height: 1.7; color: #444; margin-bottom: 20px; flex: 1; }
 .review-author { font-weight: 700; font-size: 14px; }
 .review-role { font-size: 13px; color: var(--gray); margin-top: 2px; }
 
@@ -980,6 +988,11 @@ body {
   text-transform: none;
   letter-spacing: 0;
 }
+.fg input.has-error,
+.fg textarea.has-error {
+  border-color: #d83b2d;
+}
+
 .form-error {
   color: #d83b2d;
   font-size: 13px;
@@ -1033,12 +1046,12 @@ body {
   .calculator::before,
   .calc-visual::before { animation-duration: 18s; }
   .hero-stats { flex-direction: column; gap: 24px; }
-  .benefits-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
   .calc-inner { grid-template-columns: 1fr; }
-  .catalog-grid { grid-template-columns: 1fr; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
   .steps::before { display: none; }
-  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .form-inner { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .promo-inner { flex-direction: column; text-align: center; }
@@ -1049,6 +1062,12 @@ body {
   .btn-header { display: none; }
   .calc-visual { min-height: 260px; }
   .logo-img { height: 44px; }
+}
+
+@media (max-width: 768px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .catalog-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
