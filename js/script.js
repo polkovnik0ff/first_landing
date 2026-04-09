@@ -126,23 +126,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ═══ Simple validation for demo forms ═══
+// ═══ Отправка форм ═══
 document.querySelectorAll('.lead-form').forEach((form) => {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const error = form.querySelector('.form-error');
+    const error   = form.querySelector('.form-error');
     const success = form.querySelector('.form-success');
-    if (error) {
-      error.classList.remove('visible');
-      error.textContent = '';
-    }
-    if (success) success.classList.remove('visible');
+    const btn     = form.querySelector('[type="submit"]');
 
-    const requiredFields = form.querySelectorAll('[required]');
+    if (error)   { error.classList.remove('visible'); error.textContent = ''; }
+    if (success) { success.classList.remove('visible'); }
+
+    // Клиентская валидация
     let hasEmpty = false;
-
-    requiredFields.forEach((field) => {
+    form.querySelectorAll('[required]').forEach((field) => {
       if (!field.value.trim()) {
         field.style.borderColor = '#d83b2d';
         hasEmpty = true;
@@ -152,19 +150,38 @@ document.querySelectorAll('.lead-form').forEach((form) => {
     });
 
     if (hasEmpty) {
-      if (error) {
-        error.textContent = 'Заполните обязательные поля.';
-        error.classList.add('visible');
-      }
+      if (error) { error.textContent = 'Заполните обязательные поля.'; error.classList.add('visible'); }
       return;
     }
 
-    if (success) success.classList.add('visible');
-    form.reset();
+    // Отправка на сервер
+    const origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Отправка…';
 
-    if (form.classList.contains('lead-form-modal')) {
-      setTimeout(closeModal, 900);
-    }
+    const data = new FormData(form);
+    data.append('source', form.classList.contains('lead-form-modal') ? 'modal' : 'main');
+
+    fetch('backend/submit.php', { method: 'POST', body: data })
+      .then(r => r.json())
+      .then(res => {
+        if (res.ok) {
+          if (success) success.classList.add('visible');
+          form.reset();
+          if (form.classList.contains('lead-form-modal')) {
+            setTimeout(closeModal, 1500);
+          }
+        } else {
+          if (error) { error.textContent = res.error || 'Ошибка отправки. Попробуйте позже.'; error.classList.add('visible'); }
+        }
+      })
+      .catch(() => {
+        if (error) { error.textContent = 'Ошибка сети. Попробуйте ещё раз.'; error.classList.add('visible'); }
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = origText;
+      });
   });
 });
 

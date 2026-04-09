@@ -1,0 +1,12 @@
+# Запрещаем прямой доступ к конфигу и базе заявок
+<Files "config.php">
+    Order deny,allow
+    Deny from all
+</Files>
+
+<Files "leads.csv">
+    Order deny,allow
+    Deny from all
+</Files>
+
+# submit.php доступен — он принимает POST от форм
