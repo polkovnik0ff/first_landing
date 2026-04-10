@@ -4,11 +4,10 @@
 // ════════════════════════════════════════════
 
 // Домен сайта — используется для CORS и проверки Origin
-define('SITE_DOMAIN', 'https://opalubka365.ru');
+define('SITE_DOMAIN', 'https://market.opalubka365.ru');
 
-// Google reCAPTCHA v3
-define('RECAPTCHA_SECRET',   '6LcmNrAsAAAAABFWCGZ8YbYCXmbUikQCHDI84ZOU');  // секретный ключ из console.cloud.google.com
-define('RECAPTCHA_MIN_SCORE', 0.5);                   // порог: 0.0 = бот, 1.0 = человек
+// Google reCAPTCHA v2 ("Я не робот")
+define('RECAPTCHA_SECRET', 'ВСТАВЬТЕ_SECRET_KEY_V2');  // секретный ключ из console.cloud.google.com
 
 // Куда приходят заявки (можно добавлять/убирать адреса)
 define('MAIL_RECIPIENTS', [
@@ -38,4 +37,6 @@ define('SMTP_PORT', 465);   // SSL
 // Рекомендуется перенести за пределы public_html, например:
 //   define('LEADS_FILE', '/home/username/leads/leads.csv');
 // Папку нужно создать вручную: mkdir ~/leads
-define('LEADS_FILE', __DIR__ . '/leads.csv');
+define('LEADS_FILE', '/home/c/ck33033/market/leads/leads.csv');
+
+

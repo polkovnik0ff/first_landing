@@ -19,19 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── CSRF: проверяем Origin ───────────────────
-// Браузер всегда отправляет Origin при fetch() POST.
-// Если Origin не совпадает с нашим доменом — отклоняем.
+// Сравниваем только хост, без протокола и www — устойчиво к http/https и www.
+function extractHost(string $url): string {
+    return strtolower(preg_replace('#^https?://(www\.)?#i', '', rtrim($url, '/')));
+}
+
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-if ($origin !== '' && rtrim($origin, '/') !== rtrim(SITE_DOMAIN, '/')) {
+if ($origin !== '' && extractHost($origin) !== extractHost(SITE_DOMAIN)) {
     http_response_code(403);
     echo json_encode(['ok' => false, 'error' => 'Forbidden']);
     exit;
 }
 
-// ── reCAPTCHA v3 ─────────────────────────────
+// ── reCAPTCHA v2 ─────────────────────────────
 $recaptchaToken = $_POST['g-recaptcha-response'] ?? '';
 if ($recaptchaToken === '') {
-    echo json_encode(['ok' => false, 'error' => 'Проверка безопасности не пройдена.']);
+    echo json_encode(['ok' => false, 'error' => 'Пожалуйста, подтвердите что вы не робот.']);
     exit;
 }
 
@@ -49,8 +52,9 @@ $rcResponse = @file_get_contents('https://www.google.com/recaptcha/api/siteverif
 );
 
 $rcData = $rcResponse ? json_decode($rcResponse, true) : null;
-if (!$rcData || !($rcData['success'] ?? false) || ($rcData['score'] ?? 0) < RECAPTCHA_MIN_SCORE) {
-    echo json_encode(['ok' => false, 'error' => 'Проверка безопасности не пройдена.']);
+// Для v2 проверяем только success — нет score
+if (!$rcData || !($rcData['success'] ?? false)) {
+    echo json_encode(['ok' => false, 'error' => 'Проверка не пройдена. Попробуйте ещё раз.']);
     exit;
 }
 

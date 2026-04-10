@@ -1,12 +1,4 @@
 (function () {
-// ═══ reCAPTCHA v3 ═══
-const RECAPTCHA_KEY = document.body.dataset.recaptchaKey || '';
-if (RECAPTCHA_KEY) {
-  const s = document.createElement('script');
-  s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_KEY}`;
-  document.head.appendChild(s);
-}
-
 // ═══ Calculator ═══
 function calculate() {
   const type = parseInt(document.getElementById('calcType').value, 10) || 0;
@@ -263,13 +255,12 @@ document.querySelectorAll('.lead-form').forEach((form) => {
     const data = new FormData(form);
     data.append('source', form.classList.contains('lead-form-modal') ? 'modal' : 'main');
 
-    const doSend = (token) => {
-      if (token) data.append('g-recaptcha-response', token);
-      fetch('backend/submit.php', { method: 'POST', body: data })
+    fetch('backend/submit.php', { method: 'POST', body: data })
       .then(r => r.json())
       .then(res => {
         if (res.ok) {
           form.reset();
+          if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
           form.querySelectorAll('.has-error').forEach(f => f.classList.remove('has-error'));
           if (form.classList.contains('lead-form-modal')) {
             form.style.display = 'none';
@@ -281,6 +272,7 @@ document.querySelectorAll('.lead-form').forEach((form) => {
             if (success) success.classList.add('visible');
           }
         } else {
+          if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
           if (error) { error.textContent = res.error || 'Ошибка отправки. Попробуйте позже.'; error.classList.add('visible'); }
         }
       })
@@ -291,17 +283,6 @@ document.querySelectorAll('.lead-form').forEach((form) => {
         btn.disabled = false;
         btn.textContent = origText;
       });
-    };
-
-    if (RECAPTCHA_KEY && window.grecaptcha) {
-      grecaptcha.ready(() => {
-        grecaptcha.execute(RECAPTCHA_KEY, { action: 'contact' })
-          .then(doSend)
-          .catch(() => doSend(''));
-      });
-    } else {
-      doSend('');
-    }
   });
 });
 
