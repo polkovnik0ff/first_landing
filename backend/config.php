@@ -7,7 +7,7 @@
 define('SITE_DOMAIN', 'https://market.opalubka365.ru');
 
 // Google reCAPTCHA v2 ("Я не робот")
-define('RECAPTCHA_SECRET', 'ВСТАВЬТЕ_SECRET_KEY_V2');  // секретный ключ из console.cloud.google.com
+define('RECAPTCHA_SECRET', '6LcDS7AsAAAAAFJcFAqPL5qMowXrih8Un_5MB05u');  // секретный ключ из console.cloud.google.com
 
 // Куда приходят заявки (можно добавлять/убирать адреса)
 define('MAIL_RECIPIENTS', [

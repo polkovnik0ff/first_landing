@@ -22,19 +22,31 @@ There is no build step, no package manager, no test suite. All files are served 
 index.html          ← Main production page
 new/index.html      ← Alternative design iteration (not yet deployed)
 backend/
-  config.php        ← All site settings: SMTP credentials, recipients, file paths
-  submit.php        ← Single form handler: sanitize → validate → rate-limit → CSV → email
-  .htaccess         ← Blocks direct access to config.php and leads.csv
+  config.php        ← All site settings: SMTP credentials, recipients, reCAPTCHA keys, file paths
+  submit.php        ← Single form handler: sanitize → validate → honeypot → reCAPTCHA → rate-limit → CSV → email
+  .htaccess         ← Blocks direct access to config.php and leads.csv; security headers
 css/style.css       ← Styles for main index.html
 js/script.js        ← All frontend logic for main index.html
 new/css/, new/js/   ← Styles and scripts for the new/ design version
 img/                ← Static images
+img/catalog/        ← Product photos for catalog cards (1.jpg–6.jpg, 9.webp)
 ```
+
+### Section order in index.html (top → bottom)
+
+1. Hero
+2. Социальное доказательство (логотипы)
+3. Калькулятор
+4. Каталог оборудования — карточки с фото из `img/catalog/`
+5. Что вы получаете (benefits)
+6. Как мы работаем
+7. Контактная форма
+8. Footer
 
 ### Form submission flow
 
 1. `js/script.js` validates client-side (phone mask, required fields), then POSTs to `/backend/submit.php`
-2. `submit.php` sanitizes input → validates → checks IP-based rate limit (5/hour, stored in `/tmp`) → appends to `leads.csv` → sends HTML email via Yandex SMTP to all `MAIL_RECIPIENTS`
+2. `submit.php`: sanitize → honeypot check → reCAPTCHA v2 verify → CSRF/Origin check → rate-limit → append to `leads.csv` → send HTML email via Yandex SMTP
 3. Returns `{"ok": true}` or `{"ok": false, "error": "..."}` as JSON
 
 ### Two form instances
@@ -45,24 +57,31 @@ Both forms on `index.html` (main contact form and modal) post to the same endpoi
 
 All runtime settings live in `backend/config.php`:
 - `MAIL_RECIPIENTS` — array of `{email, name}` objects
-- `SMTP_USER` / `SMTP_PASS` — Yandex mail credentials (use app password if 2FA enabled)
-- `LEADS_FILE` — absolute path to the CSV file
+- `SMTP_USER` / `SMTP_PASS` — Yandex mail credentials (`SMTP_PASS` read from env var)
+- `RECAPTCHA_SECRET` — Google reCAPTCHA v2 secret key (configured)
+- `LEADS_FILE` — absolute path to CSV outside web root
 
-**The SMTP password is currently a placeholder** (`ВСТАВЬТЕ_ПАРОЛЬ_ЗДЕСЬ`). The migration plan is to read it from an environment variable: `getenv('SMTP_PASS')`.
+**reCAPTCHA v2 site key** is set directly in `index.html` on both `.g-recaptcha` divs (`data-sitekey`).
+
+**SMTP password** is read via `getenv('SMTP_PASS')` — set on the server via `~/.bashrc`.
 
 ## Deployment
 
 Files are deployed directly to a TimeWeb server (Apache shared hosting). No CI/CD pipeline. Upload changed files via FTP/SSH or the TimeWeb panel.
 
+- Site: `https://market.opalubka365.ru/`
+- Web root: `/home/c/ck33033/market/public_html/`
+- CSV: `/home/c/ck33033/market/leads/leads.csv`
+
 The `new/` directory is a design-in-progress and is **not** the live page.
 
-## Known Pending Security Work
+## Security — все меры реализованы
 
-See the conversation history for the full security hardening plan. Key items not yet implemented:
-- CSRF token on both forms
-- Honeypot field replacing `/tmp` rate limiting
-- CORS locked to production domain (currently `*`)
-- `\r\n` stripping on `$name` to prevent email header injection
-- Security headers in `.htaccess` (CSP, X-Frame-Options, etc.)
-- SMTP password moved to server environment variable
-- `leads.csv` moved outside the web root
+- SMTP password via env var (`getenv('SMTP_PASS')`)
+- Email header injection stripped in `clean()`
+- CORS locked to `https://market.opalubka365.ru`
+- CSRF via Origin header check
+- Honeypot field `name="website"` in both forms
+- `leads.csv` moved outside web root
+- Security headers in `backend/.htaccess`
+- reCAPTCHA v2 ("Я не робот") in both forms — ключи настроены
