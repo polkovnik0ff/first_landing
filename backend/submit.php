@@ -4,9 +4,12 @@
 // ════════════════════════════════════════════
 
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: *');
 
 require_once __DIR__ . '/config.php';
+
+// CORS — разрешаем только свой домен
+header('Access-Control-Allow-Origin: ' . SITE_DOMAIN);
+header('Vary: Origin');
 
 // ── Принимаем только POST ────────────────────
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -15,8 +18,53 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// ── CSRF: проверяем Origin ───────────────────
+// Браузер всегда отправляет Origin при fetch() POST.
+// Если Origin не совпадает с нашим доменом — отклоняем.
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if ($origin !== '' && rtrim($origin, '/') !== rtrim(SITE_DOMAIN, '/')) {
+    http_response_code(403);
+    echo json_encode(['ok' => false, 'error' => 'Forbidden']);
+    exit;
+}
+
+// ── reCAPTCHA v3 ─────────────────────────────
+$recaptchaToken = $_POST['g-recaptcha-response'] ?? '';
+if ($recaptchaToken === '') {
+    echo json_encode(['ok' => false, 'error' => 'Проверка безопасности не пройдена.']);
+    exit;
+}
+
+$rcResponse = @file_get_contents('https://www.google.com/recaptcha/api/siteverify', false,
+    stream_context_create(['http' => [
+        'method'  => 'POST',
+        'header'  => 'Content-Type: application/x-www-form-urlencoded',
+        'content' => http_build_query([
+            'secret'   => RECAPTCHA_SECRET,
+            'response' => $recaptchaToken,
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+        ]),
+        'timeout' => 5,
+    ]])
+);
+
+$rcData = $rcResponse ? json_decode($rcResponse, true) : null;
+if (!$rcData || !($rcData['success'] ?? false) || ($rcData['score'] ?? 0) < RECAPTCHA_MIN_SCORE) {
+    echo json_encode(['ok' => false, 'error' => 'Проверка безопасности не пройдена.']);
+    exit;
+}
+
+// ── Honeypot: боты заполняют скрытое поле, люди нет ──
+// Тихо отвечаем "успех" — не сообщаем боту о детекции
+if (($_POST['website'] ?? '') !== '') {
+    echo json_encode(['ok' => true]);
+    exit;
+}
+
 // ── Читаем и чистим данные ───────────────────
+// str_replace на \r\n — защита от email header injection
 function clean(string $v): string {
+    $v = str_replace(["\r", "\n"], '', $v);
     return htmlspecialchars(trim(strip_tags($v)), ENT_QUOTES, 'UTF-8');
 }
 
@@ -37,25 +85,6 @@ if (mb_strlen(preg_replace('/\D/', '', $phone), 'UTF-8') < 10) {
     exit;
 }
 
-// ── Защита от спама: рейт-лимит по IP (5 заявок в час) ──
-$ip       = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-$rateFile = sys_get_temp_dir() . '/staticac_rate_' . md5($ip) . '.json';
-$now      = time();
-$limit    = 5;
-$window   = 3600; // 1 час
-
-$rate = [];
-if (file_exists($rateFile)) {
-    $rate = json_decode(file_get_contents($rateFile), true) ?? [];
-}
-$rate = array_filter($rate, fn($t) => ($now - $t) < $window);
-if (count($rate) >= $limit) {
-    echo json_encode(['ok' => false, 'error' => 'Слишком много попыток. Попробуйте через час.']);
-    exit;
-}
-$rate[] = $now;
-file_put_contents($rateFile, json_encode(array_values($rate)));
-
 // ── Сохранение в CSV ─────────────────────────
 function saveToCsv(string $file, array $row): void {
     $isNew = !file_exists($file);
@@ -69,6 +98,7 @@ function saveToCsv(string $file, array $row): void {
     fclose($fh);
 }
 
+$ip       = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $dateTime = new DateTime('now', new DateTimeZone('Europe/Moscow'));
 saveToCsv(LEADS_FILE, [
     $dateTime->format('d.m.Y'),

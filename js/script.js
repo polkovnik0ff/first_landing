@@ -1,4 +1,12 @@
 (function () {
+// ═══ reCAPTCHA v3 ═══
+const RECAPTCHA_KEY = document.body.dataset.recaptchaKey || '';
+if (RECAPTCHA_KEY) {
+  const s = document.createElement('script');
+  s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_KEY}`;
+  document.head.appendChild(s);
+}
+
 // ═══ Calculator ═══
 function calculate() {
   const type = parseInt(document.getElementById('calcType').value, 10) || 0;
@@ -255,7 +263,9 @@ document.querySelectorAll('.lead-form').forEach((form) => {
     const data = new FormData(form);
     data.append('source', form.classList.contains('lead-form-modal') ? 'modal' : 'main');
 
-    fetch('backend/submit.php', { method: 'POST', body: data })
+    const doSend = (token) => {
+      if (token) data.append('g-recaptcha-response', token);
+      fetch('backend/submit.php', { method: 'POST', body: data })
       .then(r => r.json())
       .then(res => {
         if (res.ok) {
@@ -281,6 +291,17 @@ document.querySelectorAll('.lead-form').forEach((form) => {
         btn.disabled = false;
         btn.textContent = origText;
       });
+    };
+
+    if (RECAPTCHA_KEY && window.grecaptcha) {
+      grecaptcha.ready(() => {
+        grecaptcha.execute(RECAPTCHA_KEY, { action: 'contact' })
+          .then(doSend)
+          .catch(() => doSend(''));
+      });
+    } else {
+      doSend('');
+    }
   });
 });
 
