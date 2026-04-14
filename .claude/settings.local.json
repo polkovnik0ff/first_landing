@@ -1,4 +1,11 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-Date -Format 'yyyy-MM-dd HH:mm'\")",
+      "Bash(git -C f:/projects/first_landing log --oneline -10)",
+      "Bash(git -C f:/projects/first_landing status)"
+    ]
+  },
   "enabledPlugins": {
     "engineering-skills@claude-code-skills": true,
     "engineering-advanced-skills@claude-code-skills": true,

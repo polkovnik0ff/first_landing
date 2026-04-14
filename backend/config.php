@@ -11,9 +11,9 @@ define('RECAPTCHA_SECRET', '6LcDS7AsAAAAAFJcFAqPL5qMowXrih8Un_5MB05u');  // се
 
 // Куда приходят заявки (можно добавлять/убирать адреса)
 define('MAIL_RECIPIENTS', [
-    ['email' => 'kemandy@mail.ru',      'name' => 'Менеджер 1'],
-    ['email' => 'второй@example.com',   'name' => 'Менеджер 2'],
-    ['email' => 'третий@example.com',   'name' => 'Менеджер 3'],
+    ['email' => 'kemandy@mail.ru',      'name' => 'Андрей'],
+    ['email' => 'info@opalubka365.ru',   'name' => 'Статика-с'],
+    ['email' => 'dm@atwinta.ru',   'name' => 'Даня'],
 ]);
 
 // С какого адреса отправляется письмо (Яндекс-аккаунт)
@@ -24,10 +24,10 @@ define('SMTP_USER', 'a42site@yandex.ru');
 //   echo "export SMTP_PASS='ваш_пароль'" >> ~/.bashrc && source ~/.bashrc
 // Или через панель TimeWeb → «Переменные окружения» (если есть).
 // Если 2FA — используйте «Пароли приложений» в настройках Яндекс ID.
-define('SMTP_PASS', getenv('SMTP_PASS') ?: 'ВСТАВЬТЕ_ПАРОЛЬ_ЗДЕСЬ');
+define('SMTP_PASS', getenv('SMTP_PASS') ?: 'twydghjcbtdwqkio');
 
 define('MAIL_FROM',      SMTP_USER);
-define('MAIL_FROM_NAME', 'Сайт Статика-С');
+define('MAIL_FROM_NAME', 'Лендинг Статика-С');
 
 // SMTP — Яндекс (не трогайте, если используете @yandex.ru)
 define('SMTP_HOST', 'smtp.yandex.ru');

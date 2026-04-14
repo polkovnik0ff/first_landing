@@ -1,5 +1,5 @@
 (function () {
-// ═══ Calculator ═══
+// ═══ Calculator ═══ new file
 function calculate() {
   const type = parseInt(document.getElementById('calcType').value, 10) || 0;
   const area = parseInt(document.getElementById('calcArea').value, 10) || 0;

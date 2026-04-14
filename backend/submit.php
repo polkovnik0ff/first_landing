@@ -127,7 +127,7 @@ $body    = <<<HTML
   <div style="max-width:520px;margin:0 auto;background:#fff;border-radius:8px;
               box-shadow:0 2px 8px rgba(0,0,0,.1);overflow:hidden;">
     <div style="background:#1a1a1a;padding:20px 24px;">
-      <h2 style="margin:0;color:#f4ad3a;font-size:18px;">Новая заявка — Статика-С</h2>
+      <h2 style="margin:0;color:#f4ad3a;font-size:20px;">Новая заявка — Статика-С</h2>
       <p style="margin:4px 0 0;color:#aaa;font-size:13px;">{$dateStr}</p>
     </div>
     <div style="padding:24px;">
