@@ -643,7 +643,7 @@ body {
 }
 .footer-bottom a { color: var(--gray); text-decoration: none; margin-left: 20px; transition: color 0.2s; }
 .footer-bottom a:hover { color: var(--gold); }
-.footer-msg { margin-right: 8px; }
+.footer-msg { margin-right: 0; }
 
 /* ═══ MODAL ═══ */
 .modal-overlay {
