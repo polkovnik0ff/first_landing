@@ -348,43 +348,6 @@ body {
 }
 .calc-group select:focus, .calc-group input:focus { border-color: var(--gold); }
 
-/* ═══ CALC SLIDERS ═══ */
-.calc-slider-wrap { display: flex; flex-direction: column; gap: 10px; }
-.calc-slider-top { display: flex; align-items: center; gap: 10px; }
-.calc-num-input {
-  width: 96px; padding: 10px 12px;
-  border: 2px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.05); color: var(--white);
-  font-size: 20px; font-weight: 700; font-family: inherit;
-  text-align: center; outline: none; border-radius: 0;
-  -moz-appearance: textfield; transition: border-color 0.2s;
-}
-.calc-num-input::-webkit-inner-spin-button,
-.calc-num-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.calc-num-input:focus { border-color: var(--gold); }
-.calc-num-unit { color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-.calc-slider-limits { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.3); }
-
-.calc-range {
-  -webkit-appearance: none; appearance: none;
-  width: 100%; height: 4px; border-radius: 2px; outline: none; cursor: pointer;
-  background: linear-gradient(to right, var(--gold) var(--val, 8%), rgba(255,255,255,0.15) var(--val, 8%));
-}
-.calc-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--gold); cursor: pointer;
-  box-shadow: 0 0 0 4px rgba(244,173,58,0.2);
-  transition: box-shadow 0.2s;
-}
-.calc-range::-webkit-slider-thumb:hover { box-shadow: 0 0 0 7px rgba(244,173,58,0.18); }
-.calc-range::-moz-range-thumb {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--gold); cursor: pointer; border: none;
-  box-shadow: 0 0 0 4px rgba(244,173,58,0.2);
-}
-.calc-range::-moz-range-track { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.15); }
-
 .calc-result {
   background: var(--gold); color: var(--black); padding: 20px 24px;
   margin-top: 8px; text-align: center;
