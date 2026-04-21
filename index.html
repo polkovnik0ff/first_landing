@@ -214,41 +214,15 @@
       </div>
       <div class="calc-group">
         <label for="calcArea">Площадь, м²</label>
-        <div class="custom-select" id="calcAreaCustom">
-          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">100</button>
-          <div class="custom-select-menu" role="listbox">
-            <div class="custom-select-option active" data-value="100" role="option" aria-selected="true">100</div>
-            <div class="custom-select-option" data-value="200" role="option" aria-selected="false">200</div>
-            <div class="custom-select-option" data-value="300" role="option" aria-selected="false">300</div>
-          </div>
-          <select id="calcArea" class="custom-select-native">
-            <option value="100">100</option>
-            <option value="200">200</option>
-            <option value="300">300</option>
-          </select>
-        </div>
+        <input type="number" id="calcArea" class="calc-area-input" min="1" max="1000" step="1" value="100" placeholder="100">
       </div>
       <div class="calc-group">
-        <label for="calcMonths">Срок аренды, месяцев</label>
-        <div class="custom-select" id="calcMonthsCustom">
-          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">1</button>
-          <div class="custom-select-menu" role="listbox">
-            <div class="custom-select-option active" data-value="1" role="option" aria-selected="true">1</div>
-            <div class="custom-select-option" data-value="2" role="option" aria-selected="false">2</div>
-            <div class="custom-select-option" data-value="3" role="option" aria-selected="false">3</div>
-            <div class="custom-select-option" data-value="4" role="option" aria-selected="false">4</div>
-            <div class="custom-select-option" data-value="5" role="option" aria-selected="false">5</div>
-            <div class="custom-select-option" data-value="6" role="option" aria-selected="false">6</div>
-          </div>
-          <select id="calcMonths" class="custom-select-native">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
+        <div class="calc-months-header">
+          <label for="calcMonths">Срок аренды, месяцев</label>
+          <span class="calc-months-val" id="calcMonthsVal">1 мес.</span>
         </div>
+        <input type="range" id="calcMonths" class="calc-range" min="1" max="12" step="1" value="1">
+        <div class="calc-range-limits"><span>1 мес.</span><span>12 мес.</span></div>
       </div>
 
       <div class="calc-group">

@@ -92,15 +92,48 @@ function initCustomSelect() {
   });
 }
 
+function initMonthsSlider() {
+  const range = document.getElementById('calcMonths');
+  const label = document.getElementById('calcMonthsVal');
+  if (!range || !label) return;
+
+  function update() {
+    label.textContent = range.value + ' мес.';
+    const pct = ((range.value - 1) / (12 - 1)) * 100;
+    range.style.setProperty('--val', pct + '%');
+    calculate();
+  }
+
+  range.addEventListener('input', update);
+  update();
+}
+
 calculate();
 initCustomSelect();
 initFormSectionGlow();
+initMonthsSlider();
 
 // ═══ Calculator inputs ═══
 document.getElementById('calcType')?.addEventListener('change', calculate);
-document.getElementById('calcArea')?.addEventListener('change', calculate);
-document.getElementById('calcMonths')?.addEventListener('change', calculate);
 document.getElementById('calcDelivery')?.addEventListener('change', calculate);
+
+(function initAreaInput() {
+  const inp = document.getElementById('calcArea');
+  if (!inp) return;
+  inp.addEventListener('input', () => {
+    if (inp.value.length > 4) inp.value = inp.value.slice(0, 4);
+    const v = parseInt(inp.value, 10);
+    if (!isNaN(v) && v > 1000) inp.value = 1000;
+    calculate();
+  });
+  inp.addEventListener('blur', () => {
+    let v = parseInt(inp.value, 10);
+    if (isNaN(v) || v < 1) v = 1;
+    if (v > 1000) v = 1000;
+    inp.value = v;
+    calculate();
+  });
+})();
 
 // ═══ Scroll reveal ═══
 const reveals = Array.from(document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom'));
