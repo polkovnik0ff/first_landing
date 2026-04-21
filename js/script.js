@@ -92,14 +92,52 @@ function initCustomSelect() {
   });
 }
 
+function initCalcSlider(rangeId, numId, min, max) {
+  const range = document.getElementById(rangeId);
+  const num   = document.getElementById(numId);
+  if (!range || !num) return;
+
+  function clamp(v) { return Math.max(min, Math.min(max, v)); }
+
+  function updateFill() {
+    const pct = ((range.value - min) / (max - min)) * 100;
+    range.style.setProperty('--val', pct + '%');
+  }
+
+  range.addEventListener('input', () => {
+    num.value = range.value;
+    updateFill();
+    calculate();
+  });
+
+  num.addEventListener('input', () => {
+    const v = parseInt(num.value, 10);
+    if (!isNaN(v) && v >= min && v <= max) {
+      range.value = v;
+      updateFill();
+      calculate();
+    }
+  });
+
+  num.addEventListener('blur', () => {
+    const v = parseInt(num.value, 10);
+    num.value = isNaN(v) ? min : clamp(v);
+    range.value = num.value;
+    updateFill();
+    calculate();
+  });
+
+  updateFill();
+}
+
 calculate();
 initCustomSelect();
 initFormSectionGlow();
+initCalcSlider('calcArea',   'calcAreaNum',   20, 1000);
+initCalcSlider('calcMonths', 'calcMonthsNum',  1,   12);
 
 // ═══ Calculator inputs ═══
 document.getElementById('calcType')?.addEventListener('change', calculate);
-document.getElementById('calcArea')?.addEventListener('change', calculate);
-document.getElementById('calcMonths')?.addEventListener('change', calculate);
 document.getElementById('calcDelivery')?.addEventListener('change', calculate);
 
 // ═══ Scroll reveal ═══
