@@ -37,8 +37,11 @@
     </a>
     <div class="header-contacts">
       <div class="header-messengers">
-        <a href="#" class="msg-btn tg" title="Telegram" aria-label="Telegram">
+        <!-- <a href="#" class="msg-btn tg" title="Telegram" aria-label="Telegram">
           <img src="img/telegram-logo.png" alt="Telegram">
+        </a> -->
+        <a href="#" class="msg-btn tg" title="MAX" aria-label="MAX">
+          <img src="img/max-logo.png" alt="MAX">
         </a>
         <a href="#" class="msg-btn wa" title="WhatsApp" aria-label="WhatsApp">
           <img src="img/whatsapp-logo.png" alt="WhatsApp">
@@ -64,7 +67,7 @@
       <div><div class="stat-num">9+</div><div class="stat-label">Лет на рынке</div></div>
       <div><div class="stat-num">500+</div><div class="stat-label">Объектов оснащено</div></div>
       <div><div class="stat-num">24ч</div><div class="stat-label">Отгрузка в день заказа</div></div>
-      <div><div class="stat-num">0 ₽</div><div class="stat-label">Залог не требуется</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Без залога</div></div>
     </div>
   </div>
 </section>
@@ -206,17 +209,46 @@
           <option value="440">Опалубка колонн</option>
           <option value="300">Объёмная CUPLOCK (без фанеры)</option>
           <option value="500">Объёмная CUPLOCK (с фанерой)</option>
-        
           </select>
         </div>
       </div>
       <div class="calc-group">
         <label for="calcArea">Площадь, м²</label>
-        <input type="number" id="calcArea" value="100" min="1" max="99999">
+        <div class="custom-select" id="calcAreaCustom">
+          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">100</button>
+          <div class="custom-select-menu" role="listbox">
+            <div class="custom-select-option active" data-value="100" role="option" aria-selected="true">100</div>
+            <div class="custom-select-option" data-value="200" role="option" aria-selected="false">200</div>
+            <div class="custom-select-option" data-value="300" role="option" aria-selected="false">300</div>
+          </div>
+          <select id="calcArea" class="custom-select-native">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+          </select>
+        </div>
       </div>
       <div class="calc-group">
         <label for="calcMonths">Срок аренды, месяцев</label>
-        <input type="number" id="calcMonths" value="1" min="1" max="24">
+        <div class="custom-select" id="calcMonthsCustom">
+          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">1</button>
+          <div class="custom-select-menu" role="listbox">
+            <div class="custom-select-option active" data-value="1" role="option" aria-selected="true">1</div>
+            <div class="custom-select-option" data-value="2" role="option" aria-selected="false">2</div>
+            <div class="custom-select-option" data-value="3" role="option" aria-selected="false">3</div>
+            <div class="custom-select-option" data-value="4" role="option" aria-selected="false">4</div>
+            <div class="custom-select-option" data-value="5" role="option" aria-selected="false">5</div>
+            <div class="custom-select-option" data-value="6" role="option" aria-selected="false">6</div>
+          </div>
+          <select id="calcMonths" class="custom-select-native">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
       </div>
 
       <div class="calc-group">

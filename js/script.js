@@ -40,51 +40,55 @@ function initFormSectionGlow() {
 }
 
 function initCustomSelect() {
-  const custom = document.getElementById('calcTypeCustom');
-  if (!custom) return;
-  const trigger = custom.querySelector('.custom-select-trigger');
-  const native = custom.querySelector('#calcType');
-  const options = Array.from(custom.querySelectorAll('.custom-select-option'));
+  const customSelects = Array.from(document.querySelectorAll('.custom-select'));
+  if (!customSelects.length) return;
 
-  function closeSelect() {
+  function closeSelect(custom) {
+    const trigger = custom.querySelector('.custom-select-trigger');
     custom.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
+    trigger?.setAttribute('aria-expanded', 'false');
   }
 
-  function openSelect() {
-    custom.classList.add('open');
-    trigger.setAttribute('aria-expanded', 'true');
+  function closeAllSelects() {
+    customSelects.forEach(closeSelect);
   }
 
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (custom.classList.contains('open')) closeSelect();
-    else openSelect();
-  });
+  customSelects.forEach((custom) => {
+    const trigger = custom.querySelector('.custom-select-trigger');
+    const native = custom.querySelector('.custom-select-native');
+    const options = Array.from(custom.querySelectorAll('.custom-select-option'));
+    if (!trigger || !native || !options.length) return;
 
-  options.forEach((option) => {
-    option.addEventListener('click', () => {
-      const value = option.dataset.value;
-      const text = option.textContent.trim();
-      native.value = value;
-      trigger.textContent = text;
-      options.forEach(o => {
-        o.classList.remove('active');
-        o.setAttribute('aria-selected', 'false');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const shouldOpen = !custom.classList.contains('open');
+      closeAllSelects();
+      custom.classList.toggle('open', shouldOpen);
+      trigger.setAttribute('aria-expanded', String(shouldOpen));
+    });
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        const value = option.dataset.value;
+        const text = option.textContent.trim();
+        native.value = value;
+        trigger.textContent = text;
+        options.forEach(o => {
+          o.classList.remove('active');
+          o.setAttribute('aria-selected', 'false');
+        });
+        option.classList.add('active');
+        option.setAttribute('aria-selected', 'true');
+        closeSelect(custom);
+        native.dispatchEvent(new Event('change', { bubbles: true }));
       });
-      option.classList.add('active');
-      option.setAttribute('aria-selected', 'true');
-      closeSelect();
-      calculate();
     });
   });
 
-  document.addEventListener('click', (e) => {
-    if (!custom.contains(e.target)) closeSelect();
-  });
+  document.addEventListener('click', closeAllSelects);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSelect();
+    if (e.key === 'Escape') closeAllSelects();
   });
 }
 
@@ -94,8 +98,8 @@ initFormSectionGlow();
 
 // ═══ Calculator inputs ═══
 document.getElementById('calcType')?.addEventListener('change', calculate);
-document.getElementById('calcArea')?.addEventListener('input', calculate);
-document.getElementById('calcMonths')?.addEventListener('input', calculate);
+document.getElementById('calcArea')?.addEventListener('change', calculate);
+document.getElementById('calcMonths')?.addEventListener('change', calculate);
 document.getElementById('calcDelivery')?.addEventListener('change', calculate);
 
 // ═══ Scroll reveal ═══
